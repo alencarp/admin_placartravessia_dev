@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserindo imagem</title>
+    <style>
+        body{
+            background-color: rgb(172, 172, 235);
+        }
+    </style>
+</head>
+
+<body>
+    anoMes: <input type="text" name="txtanomes" id="txtanomes">
+    <input type="button" value="Verificar" onclick="verificar()">
+    <div>
+      <span> Placar Tempo de Virada</span>
+       <span id="estrela-copa"></span>
+    </div>
+    
+    <script>
+        function verificar() {
+            var anoMes = document.getElementById('txtanomes').value;
+            window.alert(anoMes);
+            inserirEstrela(anoMes);
+            
+        }
+        
+        function inserirEstrela(anoMes) {
+            var estrela = document.getElementById('estrela-copa')
+            if ((Number(anoMes.slice(0, 4)) == 2022) && (Number(anoMes.slice(4, 6)) >= 7)) {
+                estrela.style.marginLeft = "20px";
+                estrela.innerHTML += `<scan hidden>${Number(anoMes.slice(4, 6))}/${Number(anoMes.slice(0, 4))}</scan>`;
+                for (var i = 0; i < 4; i++) {
+                    estrela.innerHTML += '<img src="images/estrela.png" height="35" width="35"/>'
+                }
+            } else {
+                window.alert("Entrou no else");
+                estrela.innerHTML =  `<scan hidden>${Number(anoMes.slice(4, 6))}/${Number(anoMes.slice(0, 4))}</scan>`;
+            }
+        }
+    </script>
+</body>
+</html>
